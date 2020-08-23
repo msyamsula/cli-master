@@ -1,0 +1,1 @@
+python /Users/muhammadsyamsula/Desktop/cli-master/compile.py $1

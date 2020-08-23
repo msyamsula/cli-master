@@ -1,0 +1,1 @@
+python /Users/muhammadsyamsula/Desktop/cli-master/create.py $1
