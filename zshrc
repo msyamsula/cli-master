@@ -1,29 +1,39 @@
-export GOPATH=/Users/muhammadsyamsula/Desktop/go
-export GOBIN=$GOPATH/bin
-
-
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/Users/muhammadsyamsula/confluent-5.5.1/bin:$PATH
-export PATH=/Users/muhammadsyamsula/Desktop/bin:$PATH
-export PATH=/Users/muhammadsyamsula/Desktop/cli-master:$PATH
-export PATH=/usr/local/bin/travis:$PATH
-export PATH=$PATH:/opt/apache-maven/bin
-export PATH=$PATH:/Users/muhammadsyamsula/tomcat/bin
-
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/muhammadsyamsula/.oh-my-zsh"
+# export GOROOT="/usr/local/go"
+# export GOPATH="/Users/muhammadsyamsularifin/goGRPC"
+export GOPATH="/Users/muhammadsyamsularifin/go"
+# export GOPATH="/Users/muhammadsyamsularifin/SyamsulApp-GoAPI:$GOPATH"
+export GOBIN="/Users/muhammadsyamsularifin/go/bin"
+# export GOBIN="/Users/muhammadsyamsularifin/SyamsulApp-GoAPI/bin:$GOBIN"
+export ZSH="/Users/muhammadsyamsularifin/.oh-my-zsh"
+export PATH="$PATH:/usr/local/bin:$GOPATH:$GOBIN"
+export PATH="$PATH:/Users/muhammadsyamsularifin/apache-maven-3.6.3/bin"
+export PATH="$PATH:/Users/muhammadsyamsularifin/rabbitmq_server-3.8.9/sbin"
+
+# setting airflow home and config file
+export AIRFLOW_HOME="/Users/muhammadsyamsularifin/linkaja/frodo"
+
+# pythonpath
+export PYTHONPATH="/Users/muhammadsyamsularifin/linkaja/frodo"
+
+# airflow cannot import . from _mysql, _mysql not define (2 hari)
+MYSQL=/usr/local/bin
+export PATH=$PATH:$MYSQL
+export DYLD_LIBRARY_PATH="/usr/local/lib:$DYLD_LIBRARY_PATH"
+export DYLD_LIBRARY_PATH="/Users/muhammadsyamsularifin/Downloads/oracle:$DYLD_LIBRARY_PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -44,7 +54,7 @@ ZSH_THEME="robbyrussell"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -75,8 +85,8 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
@@ -108,39 +118,66 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias python="python3"
-# alias newtab="osascript -e 'tell application "Terminal" to activate' -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down'"
+
 alias g="git status"
-alias v="source venv/bin/activate"
-alias ngetes='_ngetes() { python -m pytest -s "$1";}; _ngetes'
-alias cover='_cover(){ python -m pytest -s --disable-warnings --cov-report html --cov=api tests }; _cover'
-alias sb-swagger='code ~/Chimps/smartbiller/api/apps/views/swagger-ui.yml'
-alias sb-api='code ~/Chimps/smartbiller'
-alias go-staging='ssh -i ~/Documents/Credentials/seal-staging.pem infra@103.117.207.188'
-alias go-prod='ssh -i ~/Documents/Credentials/smartbiller.pem admin@13.251.148.161'
-alias go-anomaly='ssh -i /Users/muhammadsyamsula/Documents/Credentials/devops-smartbiller-anomaly.pem devops@103.117.207.18'
-alias cde='conda deactivate'
-# added by travis gem
-[ -f /Users/muhammadsyamsula/.travis/travis.sh ] && source /Users/muhammadsyamsula/.travis/travis.sh
+alias v="source ./venv/bin/activate"
+alias zshrc="source ~/.zshrc"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/muhammadsyamsula/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/muhammadsyamsula/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+buat(){
+    cp ~/CP/blanko.cpp $1
+    code $1
+}
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/muhammadsyamsula/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/muhammadsyamsula/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+kompail(){
+    /usr/bin/g++ -std=c++11 -g $1 -o prog
+}
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/muhammadsyamsula/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/muhammadsyamsula/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/muhammadsyamsula/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/muhammadsyamsula/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+run(){
+    kompail $1
+    ./prog < tests.txt > output.txt
+    cat output.txt
+}
 
+linkaja-git(){
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/id_rsa_gitlab_linkaja
+    ssh -T git@gitlab.linkaja.com
+}
+
+private-gitlab(){
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/msyamsula_gitlab
+    ssh -T git@gitlab.com
+}
+
+cg(){
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/$1
+    ssh -T git@github.com
+}
+
+push(){
+    cg $1
+    git push origin $2
+}
+
+sd(){
+    sudo shutdown -h now
+}
+
+go-dev(){
+    ssh muhammad_arifin@10.14.3.20
+}
+
+go-stark(){
+    mysql -h db-mysql-proxy.linkaja.dev -P 6033 -u apps -p
+    # mysql -h 10.11.7.153 -P 3306 -u apps_frodo -p
+}
+
+send-dev(){
+    rsync -avz . muhammad_arifin@10.14.3.20:/home/muhammad_arifin/frodo --exclude="venv" --exclude="__pycache__" --exclude="tests" --exclude=".git"
+}
+
+alias ws="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow webserver"
+alias ainit="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow initdb"
+alias sch="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow scheduler"
