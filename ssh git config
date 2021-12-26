@@ -1,0 +1,19 @@
+Host gitlab.linkaja.com
+   AddKeysToAgent yes
+   UseKeychain yes   
+   IdentityFile ~/.ssh/id_rsa_gitlab_linkaja
+
+Host github.com-msyamsula
+   AddKeysToAgent yes
+   UseKeychain yes   
+   IdentityFile ~/.ssh/ssh_private_github
+
+Host github.com-culcalcul
+   AddKeysToAgent yes
+   UseKeychain yes   
+   IdentityFile ~/.ssh/culcalcul
+
+Host gitlab.com-msyamsula_gitlab
+  Hostname gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/msyamsula_gitlab
