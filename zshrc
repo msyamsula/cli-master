@@ -125,7 +125,7 @@ alias zshrc="source ~/.zshrc"
 
 buat(){
     cp ~/CP/blanko.cpp $1
-    code $1
+    touch $1
 }
 
 kompail(){
@@ -181,3 +181,25 @@ send-dev(){
 alias ws="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow webserver"
 alias ainit="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow initdb"
 alias sch="/Users/muhammadsyamsularifin/frodo/venv/bin/airflow scheduler"
+
+
+cg(){
+    eval "$(ssh-agent -s)"
+    ssh-add -K ~/.ssh/$1
+    ssh -T git@github.com
+}
+
+buat(){
+    cp ~/CP/blanko.cpp $1
+    touch $1
+}
+
+run(){
+    clang++ -std=c++11 -stdlib=libc++ -Weverything -w $1 -o prog
+    ./prog < input.txt > output.txt
+}
+
+go14(){
+   alias go=~/go14/bin/go
+
+}
